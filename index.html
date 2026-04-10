@@ -3,190 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Elite UA Generator - 100% Real</title>
+    <title>Ultimate UA Generator - Pro v.2026</title>
     <style>
-        :root { --primary: #2ea44f; --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --blue: #58a6ff; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
-        .container { max-width: 1100px; margin: auto; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; box-shadow: 0 10px 50px rgba(0,0,0,0.5); }
-        h1 { text-align: center; color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 25px; font-size: 22px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .field { display: flex; flex-direction: column; margin-bottom: 15px; }
-        label { font-size: 11px; font-weight: bold; margin-bottom: 6px; color: #8b949e; text-transform: uppercase; }
-        select { background: #010409; color: white; border: 1px solid var(--border); padding: 12px; border-radius: 6px; outline: none; cursor: pointer; font-size: 13px; }
-        .btn-gen { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px; }
-        .btn-gen:hover { background: #2c974b; transform: scale(1.01); }
-        .output-area { margin-top: 25px; background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 20px; position: relative; }
-        #ua-output { font-family: 'Consolas', monospace; font-size: 13px; color: #79c0ff; word-break: break-all; margin: 0; white-space: pre-wrap; line-height: 1.6; }
-        .copy-btn { position: absolute; top: 10px; right: 10px; background: var(--blue); border: none; color: white; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
-        .footer-info { text-align: center; font-size: 11px; color: #8b949e; margin-top: 20px; }
+        :root { --gh-dark: #0d1117; --gh-card: #161b22; --gh-blue: #2f81f7; --gh-green: #238636; --gh-border: #30363d; --gh-text: #e6edf3; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--gh-dark); color: var(--gh-text); padding: 20px; }
+        .container { max-width: 1200px; margin: auto; background: var(--gh-card); border: 1px solid var(--gh-border); border-radius: 12px; padding: 30px; }
+        h1 { text-align: center; color: var(--gh-blue); font-size: 24px; margin-bottom: 25px; border-bottom: 1px solid var(--gh-border); padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .field { display: flex; flex-direction: column; }
+        label { font-size: 11px; font-weight: bold; margin-bottom: 5px; color: #8b949e; text-transform: uppercase; }
+        select, input { background: #010409; color: white; border: 1px solid var(--gh-border); padding: 12px; border-radius: 6px; outline: none; }
+        .gen-btn { background: var(--gh-green); color: white; border: none; padding: 15px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; transition: 0.3s; }
+        .gen-btn:hover { background: #2ea043; transform: scale(1.01); }
+        .output-box { margin-top: 25px; background: #000; border: 1px solid var(--gh-border); border-radius: 8px; padding: 20px; position: relative; }
+        #ua-display { font-family: 'Consolas', monospace; font-size: 13px; color: #79c0ff; word-break: break-all; margin: 0; line-height: 1.6; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background: var(--gh-blue); border: none; color: white; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+        
+        /* History Section */
+        .history-section { margin-top: 40px; border-top: 2px solid var(--gh-border); padding-top: 20px; }
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        #searchHistory { width: 300px; padding: 8px; }
+        .history-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .history-table th, .history-table td { border: 1px solid var(--gh-border); padding: 10px; text-align: left; }
+        .history-table th { background: #21262d; }
+        .history-table tr:nth-child(even) { background: #1c2128; }
+        .no-repeat-badge { background: #f85149; color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🚀 Elite Global UA Generator (Chrome 134-146)</h1>
+    <h1>🚀 Elite UA Generator (Mobile & Desktop 8.1-11)</h1>
 
     <div class="grid">
-        <!-- Platform Option -->
         <div class="field">
-            <label>Social Platform / Browser</label>
-            <select id="platform" onchange="filterDevices()">
-                <option value="CHROME_MOB">Chrome Mobile (134-146)</option>
-                <option value="CHROME_WIN">Chrome Windows (134-146)</option>
-                <option value="FIREFOX_MOB">Firefox Mobile</option>
-                <option value="FIREFOX_WIN">Firefox Windows</option>
-                <option value="FB_ANDROID">Facebook Android</option>
-                <option value="FB_IOS">Facebook iOS</option>
+            <label>Platform / Browser</label>
+            <select id="platform">
+                <option value="CHROME">Chrome (134-146)</option>
+                <option value="FIREFOX">Firefox (Stable)</option>
+                <option value="FACEBOOK">Facebook App</option>
                 <option value="INSTAGRAM">Instagram App</option>
-                <option value="TIKTOK">TikTok Global</option>
-                <option value="REDDIT">Reddit App</option>
+                <option value="TIKTOK">TikTok App</option>
             </select>
         </div>
 
-        <!-- Device Option -->
         <div class="field">
-            <label>Device Model</label>
-            <select id="deviceSelect"></select>
+            <label>Device Category</label>
+            <select id="deviceCat">
+                <option value="MOBILE">Android (All Brands)</option>
+                <option value="IOS">Apple (iPhone/iPad)</option>
+                <option value="WINDOWS">Windows (8.1, 10, 11)</option>
+            </select>
         </div>
 
-        <!-- Carrier Option (All Major Countries) -->
         <div class="field">
-            <label>Carrier (Network)</label>
+            <label>Carrier / Global</label>
             <select id="carrier">
-                <option value="Grameenphone">Grameenphone (BD)</option>
-                <option value="Robi">Robi (BD)</option>
-                <option value="Banglalink">Banglalink (BD)</option>
-                <option value="Verizon">Verizon (USA)</option>
-                <option value="AT&T">AT&T (USA)</option>
-                <option value="T-Mobile">T-Mobile (USA/DE)</option>
-                <option value="Reliance Jio">Jio (India)</option>
-                <option value="Airtel">Airtel (India)</option>
-                <option value="Vodafone">Vodafone (UK/IN)</option>
-                <option value="Orange">Orange (FR)</option>
-                <option value="Etisalat">Etisalat (UAE)</option>
-                <option value="STC">STC (KSA)</option>
-                <option value="Zain">Zain (KWT/SA)</option>
-                <option value="Optus">Optus (AUS)</option>
-                <option value="Telstra">Telstra (AUS)</option>
-            </select>
-        </div>
-
-        <!-- Language Option (Global) -->
-        <div class="field">
-            <label>Language (Locale)</label>
-            <select id="language">
-                <option value="en_US">English (USA)</option>
-                <option value="bn_BD">Bengali (BD)</option>
-                <option value="hi_IN">Hindi (India)</option>
-                <option value="en_GB">English (UK)</option>
-                <option value="ar_SA">Arabic (Saudi)</option>
-                <option value="fr_FR">French (France)</option>
-                <option value="de_DE">German (Germany)</option>
-                <option value="es_ES">Spanish (Spain)</option>
-                <option value="pt_BR">Portuguese (Brazil)</option>
-                <option value="ru_RU">Russian (Russia)</option>
-                <option value="ja_JP">Japanese (Japan)</option>
-                <option value="zh_CN">Chinese (China)</option>
+                <option value="Grameenphone|bn_BD">Bangladesh (GP)</option>
+                <option value="Verizon|en_US">USA (Verizon)</option>
+                <option value="Reliance Jio|hi_IN">India (Jio)</option>
+                <option value="Vodafone|en_GB">UK (Vodafone)</option>
+                <option value="T-Mobile|de_DE">Germany (T-Mobile)</option>
+                <option value="Etisalat|ar_AE">UAE (Etisalat)</option>
+                <option value="Orange|fr_FR">France (Orange)</option>
             </select>
         </div>
     </div>
 
-    <button class="btn-gen" onclick="generateUA()">GENERATE 100% REAL USER-AGENT</button>
+    <button class="gen-btn" onclick="generateUniqueUA()">GENERATE UNIQUE REAL UA</button>
 
-    <div class="output-area">
+    <div class="output-box">
         <button class="copy-btn" onclick="copyUA()">COPY</button>
-        <pre id="ua-output">Ready to generate...</pre>
+        <pre id="ua-display">Click generate to start...</pre>
     </div>
 
-    <div class="footer-info">
-        Verified Engine: Chrome 134.x to 146.x | Firefox 125.x | FB v.520.x | Updated 2025-2026
+    <!-- History Section -->
+    <div class="history-section">
+        <div class="history-header">
+            <h3>📜 Generation History</h3>
+            <input type="text" id="searchHistory" placeholder="Search history (e.g. Samsung, Windows)..." onkeyup="filterHistory()">
+        </div>
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Platform</th>
+                    <th>UA String</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+                <!-- Data will appear here -->
+            </tbody>
+        </table>
     </div>
 </div>
 
 <script>
-    const devices = {
-        mobile: [
-            { name: "Samsung S24 Ultra", model: "SM-S928B", brand: "samsung", build: "UP1A.231005.007", os: "14", scale: "3.0" },
-            { name: "Samsung S25 Ultra", model: "SM-S938B", brand: "samsung", build: "VP1A.241005.001", os: "15", scale: "3.0" },
-            { name: "iPhone 15 Pro Max", model: "iPhone16,2", brand: "Apple", build: "21E219", os: "17.4" },
-            { name: "iPhone 16 Pro Max", model: "iPhone17,1", brand: "Apple", build: "22A345", os: "18.1" },
-            { name: "iPhone 17 Ultra (2026)", model: "iPhone18,2", brand: "Apple", build: "23A567", os: "19.0" },
-            { name: "Pixel 9 Pro", model: "Pixel 9 Pro", brand: "google", build: "AD1A.240511.001", os: "15", scale: "3.5" }
-        ],
-        windows: [
-            { name: "Windows 11 PC", model: "Windows NT 10.0; Win64; x64" },
-            { name: "Windows 10 Pro", model: "Windows NT 10.0; Win64; x64" }
-        ]
-    };
+    const androidPool = [
+        { b: "Samsung", m: "SM-S928B", os: "14", build: "UP1A.231005.007" },
+        { b: "Xiaomi", m: "23127PN0CC", os: "14", build: "UKQ1.230804.001" },
+        { b: "OnePlus", m: "CPH2581", os: "14", build: "UKQ1.230917.001" },
+        { b: "Google", m: "Pixel 9 Pro", os: "15", build: "AD1A.240511.001" },
+        { b: "Infinix", m: "X6711", os: "13", build: "TP1A.220624.014" },
+        { b: "Oppo", m: "CPH2521", os: "13", build: "SP1A.210812.016" },
+        { b: "Realme", m: "RMX3741", os: "13", build: "SP1A.210812.016" }
+    ];
 
-    function filterDevices() {
+    const iosPool = [
+        { m: "iPhone16,2", os: "17.4.1", build: "21E219" },
+        { m: "iPhone17,1", os: "18.1.0", build: "22A345" },
+        { m: "iPhone18,2", os: "19.0.0", build: "23A567" }
+    ];
+
+    const windowsPool = [
+        { name: "Windows 8.1", ver: "Windows NT 6.3; Win64; x64" },
+        { name: "Windows 10", ver: "Windows NT 10.0; Win64; x64" },
+        { name: "Windows 11", ver: "Windows NT 10.0; Win64; x64" }
+    ];
+
+    let generatedHistory = [];
+    let usedUAs = new Set();
+
+    function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function generateUniqueUA() {
         const plat = document.getElementById('platform').value;
-        const select = document.getElementById('deviceSelect');
-        select.innerHTML = "";
-        const type = (plat.includes('WIN')) ? 'windows' : 'mobile';
-        devices[type].forEach((d, i) => {
-            let opt = document.createElement('option');
-            opt.value = i; opt.innerText = d.name;
-            select.appendChild(opt);
+        const cat = document.getElementById('deviceCat').value;
+        const carrierData = document.getElementById('carrier').value.split('|');
+        const carrier = carrierData[0];
+        const lang = carrierData[1];
+
+        const chromeVer = `${rand(134, 146)}.0.${rand(6000, 7000)}.${rand(10, 150)}`;
+        const fbVer = `${rand(480, 530)}.0.0.${rand(30, 99)}.${rand(100, 200)}`;
+        const fbbv = rand(580000000, 690000000);
+        const ffVer = `${rand(125, 135)}.0`;
+
+        let ua = "";
+        
+        // Loop to ensure uniqueness
+        for(let i=0; i<50; i++) {
+            if (cat === "MOBILE") {
+                const dev = pick(androidPool);
+                if (plat === "CHROME") ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.m}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Mobile Safari/537.36`;
+                else if (plat === "FIREFOX") ua = `Mozilla/5.0 (Android ${dev.os}; Mobile; rv:${ffVer}) Gecko/${ffVer} Firefox/${ffVer}`;
+                else if (plat === "FACEBOOK") ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.m} Build/${dev.build}; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/${chromeVer} Mobile Safari/537.36 [FBAN/FB4A;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.m};FBMD/${dev.b};FBSN/Android;FBSV/${dev.os};FBSS/3.0;FBCR/${carrier};FBLC/${lang};FBOP/19;FBRV/${fbbv+rand(1,999)}]`;
+                else if (plat === "INSTAGRAM") ua = `Instagram ${rand(320, 360)}.0.0.0.0 (${dev.m}; ${dev.os}; ${lang}; en-US; scale=3.0; 1179x2556; ${fbbv})`;
+                else if (plat === "TIKTOK") ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.m}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Mobile Safari/537.36 TikTok/${rand(33, 40)}.0.0`;
+            } 
+            else if (cat === "IOS") {
+                const dev = pick(iosPool);
+                if (plat === "CHROME") ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) CriOS/${chromeVer} Mobile/15E148 Safari/604.1`;
+                else if (plat === "FACEBOOK") ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/${dev.build} [FBAN/FBIOS;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.m};FBMD/iPhone;FBSN/iOS;FBSV/${dev.os};FBSS/3;FBCR/${carrier};FBLC/${lang};FBOP/5;FBRV/${fbbv+rand(1,999)}]`;
+                else if (plat === "INSTAGRAM") ua = `Instagram ${rand(320, 360)}.0.0.0.0 (${dev.m}; ${dev.os}; ${lang}; en-US; scale=3.0; 1179x2556; ${fbbv})`;
+                else ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1`;
+            }
+            else if (cat === "WINDOWS") {
+                const dev = pick(windowsPool);
+                if (plat === "CHROME") ua = `Mozilla/5.0 (${dev.ver}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Safari/537.36`;
+                else ua = `Mozilla/5.0 (${dev.ver}; rv:${ffVer}) Gecko/20100101 Firefox/${ffVer}`;
+            }
+
+            if (!usedUAs.has(ua)) {
+                usedUAs.add(ua);
+                break;
+            }
+        }
+
+        document.getElementById('ua-display').innerText = ua;
+        addToHistory(ua, plat);
+    }
+
+    function addToHistory(ua, platform) {
+        const time = new Date().toLocaleTimeString();
+        generatedHistory.unshift({ time, platform, ua });
+        renderHistory();
+    }
+
+    function renderHistory(filter = "") {
+        const body = document.getElementById('historyBody');
+        body.innerHTML = "";
+        generatedHistory.filter(item => item.ua.toLowerCase().includes(filter.toLowerCase()) || item.platform.toLowerCase().includes(filter.toLowerCase())).forEach(item => {
+            const row = `<tr>
+                <td>${item.time}</td>
+                <td><span class="no-repeat-badge">${item.platform}</span></td>
+                <td>${item.ua}</td>
+            </tr>`;
+            body.innerHTML += row;
         });
     }
 
-    function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
-
-    function generateUA() {
-        const plat = document.getElementById('platform').value;
-        const devIdx = document.getElementById('deviceSelect').value;
-        const carrier = document.getElementById('carrier').value;
-        const lang = document.getElementById('language').value;
-        const dev = (plat.includes('WIN')) ? devices.windows[devIdx] : devices.mobile[devIdx];
-        
-        // Dynamic Versions
-        const chromeVer = `${rand(134, 146)}.0.${rand(6000, 7000)}.${rand(10, 150)}`;
-        const ffVer = `${rand(125, 135)}.0`;
-        const fbVer = `${rand(480, 530)}.0.0.${rand(30, 99)}.${rand(100, 200)}`;
-        const fbbv = rand(580000000, 690000000);
-        
-        let ua = "";
-
-        if (plat === "CHROME_MOB") {
-            ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Mobile Safari/537.36`;
-        } 
-        else if (plat === "CHROME_WIN") {
-            ua = `Mozilla/5.0 (${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Safari/537.36`;
-        }
-        else if (plat === "FIREFOX_MOB") {
-            ua = `Mozilla/5.0 (Android ${dev.os}; Mobile; rv:${ffVer}) Gecko/${ffVer} Firefox/${ffVer}`;
-        }
-        else if (plat === "FIREFOX_WIN") {
-            ua = `Mozilla/5.0 (${dev.model}; rv:${ffVer}) Gecko/20100101 Firefox/${ffVer}`;
-        }
-        else if (plat === "FB_ANDROID") {
-            ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model} Build/${dev.build}; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/${chromeVer} Mobile Safari/537.36 [FBAN/FB4A;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.model};FBMD/${dev.brand};FBSN/Android;FBSV/${dev.os};FBSS/${dev.scale || '3.0'};FBCR/${carrier};FBLC/${lang};FBOP/19;FBRV/${fbbv+rand(100,999)}]`;
-        }
-        else if (plat === "FB_IOS") {
-            ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/${dev.build} [FBAN/FBIOS;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.model};FBMD/iPhone;FBSN/iOS;FBSV/${dev.os};FBSS/3;FBCR/${carrier};FBLC/${lang};FBOP/5;FBRV/${fbbv+rand(100,999)}]`;
-        }
-        else if (plat === "INSTAGRAM") {
-            ua = `Instagram ${rand(320, 360)}.0.0.0.0 (${dev.model}; ${dev.os}; ${lang}; en-US; scale=${dev.scale || '3.0'}; 1179x2556; ${fbbv})`;
-        }
-        else if (plat === "TIKTOK") {
-            ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Mobile Safari/537.36 TikTok/${rand(33, 40)}.0.0`;
-        }
-        else if (plat === "REDDIT") {
-            ua = `Reddit/${rand(2024, 2026)}.${rand(1, 12)}.0 (Android ${dev.os}; ${dev.model})`;
-        }
-
-        document.getElementById('ua-output').innerText = ua;
+    function filterHistory() {
+        const search = document.getElementById('searchHistory').value;
+        renderHistory(search);
     }
 
     function copyUA() {
-        const text = document.getElementById('ua-output').innerText;
+        const text = document.getElementById('ua-display').innerText;
         navigator.clipboard.writeText(text);
         const btn = document.querySelector('.copy-btn');
         btn.innerText = "COPIED!";
         setTimeout(() => btn.innerText = "COPY", 1500);
     }
-    filterDevices();
 </script>
 
 </body>
