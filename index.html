@@ -66,11 +66,11 @@
                 <div class="field">
                     <label>Social Platform</label>
                     <select id="platform">
-                        <option value="CHROME">Chrome (Real Engine 134-146)</option>
+                        <option value="CHROME">Chrome (Real Engine 133-146)</option>
+                        <option value="FIREFOX">Firefox (Stable 133-143)</option>
                         <option value="FACEBOOK">Facebook App (100% Real)</option>
                         <option value="INSTAGRAM">Instagram App (Real Scale)</option>
                         <option value="TIKTOK">TikTok (Global Build)</option>
-                        <option value="FIREFOX">Firefox (Stable Desktop)</option>
                     </select>
                 </div>
                 <div class="field">
@@ -111,7 +111,7 @@
         { brand: "Samsung", model: "SM-S928B", name: "S24 Ultra", os: "14", build: "UP1A.231005.007", scale: "3.0" },
         { brand: "Samsung", model: "SM-S938B", name: "S25 Ultra", os: "15", build: "VP1A.241005.001", scale: "3.0" },
         { brand: "Xiaomi", model: "23127PN0CC", name: "Xiaomi 14 Pro", os: "14", build: "UKQ1.230804.001", scale: "3.0" },
-        { brand: "Google", model: "Pixel 9 Pro", name: "Pixel 9", os: "15", build: "AD1A.240511.001", scale: "3.5" },
+        { brand: "Google", model: "Pixel 9 Pro", name: "Pixel 9 Pro", os: "15", build: "AD1A.240511.001", scale: "3.5" },
         { brand: "OnePlus", model: "CPH2581", name: "OnePlus 12", os: "14", build: "UKQ1.230917.001", scale: "3.0" },
         { brand: "Vivo", model: "V2303", name: "Vivo V29", os: "13", build: "TP1A.220624.014", scale: "2.7" }
     ];
@@ -168,7 +168,11 @@
         const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
         
         let ua = "";
-        const cVer = `${rand(134, 146)}.0.${rand(6000, 7000)}.${rand(10, 150)}`;
+        
+        // --- REAL VERSIONS LOGIC (AS PER REQUEST) ---
+        const chromeVer = `${rand(133, 146)}.0.${rand(6000, 7000)}.${rand(10, 180)}`;
+        const firefoxVer = `${rand(133, 143)}.0`;
+        
         const fbVer = `${rand(480, 530)}.0.0.${rand(30, 99)}.${rand(100, 200)}`;
         const fbbv = rand(580000000, 690000000);
         const carrier = carriers[rand(0, carriers.length - 1)];
@@ -176,24 +180,32 @@
         if (cat === "MOBILE") {
             const dev = androidPool[rand(0, androidPool.length - 1)];
             if (plat === "CHROME") {
-                ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Mobile Safari/537.36`;
+                ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Mobile Safari/537.36`;
+            } else if (plat === "FIREFOX") {
+                ua = `Mozilla/5.0 (Android ${dev.os}; Mobile; rv:${firefoxVer}) Gecko/${firefoxVer} Firefox/${firefoxVer}`;
             } else if (plat === "FACEBOOK") {
-                ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model} Build/${dev.build}; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/${cVer} Mobile Safari/537.36 [FBAN/FB4A;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.model};FBMD/${dev.brand};FBSN/Android;FBSV/${dev.os};FBSS/${dev.scale};FBCR/${carrier.c};FBLC/${carrier.l};FBOP/19;FBRV/${fbbv+rand(1,5000)}]`;
+                ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model} Build/${dev.build}; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/${chromeVer} Mobile Safari/537.36 [FBAN/FB4A;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.model};FBMD/${dev.brand};FBSN/Android;FBSV/${dev.os};FBSS/${dev.scale};FBCR/${carrier.c};FBLC/${carrier.l};FBOP/19;FBRV/${fbbv+rand(1,5000)}]`;
             } else if (plat === "INSTAGRAM") {
                 ua = `Instagram ${rand(320, 360)}.0.0.0.0 (${dev.model}; ${dev.os}; ${carrier.l}; en-US; scale=${dev.scale}; 1179x2556; ${fbbv})`;
             } else if (plat === "TIKTOK") {
-                ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Mobile Safari/537.36 TikTok/${rand(33, 40)}.0.0`;
+                ua = `Mozilla/5.0 (Linux; Android ${dev.os}; ${dev.model}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Mobile Safari/537.36 TikTok/${rand(33, 40)}.0.0`;
             }
         } else if (cat === "IOS") {
             const dev = iosPool[rand(0, iosPool.length - 1)];
             if (plat === "FACEBOOK") {
                 ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/${dev.build} [FBAN/FBIOS;FBAV/${fbVer};FBBV/${fbbv};FBDV/${dev.model};FBMD/iPhone;FBSN/iOS;FBSV/${dev.os};FBSS/3;FBCR/${carrier.c};FBLC/${carrier.l};FBOP/5;FBRV/${fbbv+rand(1,5000)}]`;
+            } else if (plat === "FIREFOX") {
+                ua = `Mozilla/5.0 (iPhone; CPU OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/${firefoxVer} Mobile/15E148 Safari/605.1.15`;
             } else {
-                ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1`;
+                ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${dev.os.replace('.','_')} like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1 Chrome/${chromeVer}`;
             }
         } else {
             const dev = winPool[rand(0, winPool.length - 1)];
-            ua = `Mozilla/5.0 (${dev.nt}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Safari/537.36`;
+            if (plat === "FIREFOX") {
+                ua = `Mozilla/5.0 (${dev.nt}; Win64; x64; rv:${firefoxVer}) Gecko/20100101 Firefox/${firefoxVer}`;
+            } else {
+                ua = `Mozilla/5.0 (${dev.nt}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeVer} Safari/537.36`;
+            }
         }
 
         document.getElementById('ua-display').innerText = ua;
@@ -211,6 +223,7 @@
 
     function loadHistory() {
         let db = JSON.parse(localStorage.getItem('ua_db'));
+        if(!db || !activeUser || !db[activeUser]) return;
         const query = document.getElementById('search').value.toLowerCase();
         const body = document.getElementById('history-body');
         body.innerHTML = "";
@@ -223,7 +236,7 @@
     function copyUA() {
         const t = document.getElementById('ua-display').innerText;
         navigator.clipboard.writeText(t);
-        alert("100% Real UA Copied!");
+        alert("100% Real UA (v.133-146) Copied!");
     }
 </script>
 </body>
